@@ -24,6 +24,11 @@
         public void setMine() { isMine = true; }
         public void mark() { isMarked = true; }
         public void unmark() { isMarked = false; }
+        public void setWrong()
+        {
+            isMarked = false;
+            value = "!";
+        }
         public bool isEmpty() { return value == " "; }
     }
 }

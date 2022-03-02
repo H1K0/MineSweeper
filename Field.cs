@@ -160,6 +160,8 @@
             {
                 if (!opened.Contains(cells[i]))
                     opened.Add(cells[i]);
+                if (cells[i].isMarked && !cells[i].isMine)
+                    cells[i].setWrong();
             }
         }
         public void mark(int y, int x) { cells[y * width + x].mark(); }
