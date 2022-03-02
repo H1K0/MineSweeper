@@ -95,7 +95,26 @@
             if (y < 0 || y >= height || x < 0 || x >= width)
                 throw new Exception("Coordinates out of the field!");
             cells[y * width + x].open();
+            if (cells[y * width + x].isEmpty())
+                this.recur_open(y, x, new List<Cell>());
             return cells[y * width + x].isMine;
+        }
+        private void recur_open(int y, int x, List<Cell> opened)
+        {
+            if (!cells[y * width + x].isMine)
+                cells[y * width + x].open();
+            if (cells[y * width + x].isEmpty() && !opened.Contains(cells[y * width + x]))
+            {
+                opened.Add(cells[y * width + x]);
+                if (x < width - 1)
+                    this.recur_open(y, x + 1, opened);
+                if (x > 0)
+                    this.recur_open(y, x - 1, opened);
+                if (y < height - 1)
+                    this.recur_open(y + 1, x, opened);
+                if (y > 0)
+                    this.recur_open(y - 1, x, opened);
+            }
         }
         public void openall()
         {
