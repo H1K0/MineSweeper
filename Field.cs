@@ -109,7 +109,7 @@
         public bool check()
         {
             for (int i = 0; i < size; i++)
-                if (!cells[i].isOpened)
+                if (!cells[i].isMine && !cells[i].isOpened)
                     return false;
             return true;
         }
