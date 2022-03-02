@@ -4,7 +4,6 @@
     {
         public static void Main(string[] args)
         {
-            int width, height, nmines;
             Game game;
             while (true)
             {
@@ -31,7 +30,7 @@
                             "Enter field width, height and number of mines separated with a space: ");
                     }
                 }
-                bool result = game.run();
+                bool result = game.Run();
                 if (result)
                     Console.WriteLine("You win! Congratulations!");
                 else

@@ -2,33 +2,33 @@
 {
     internal class Cell
     {
-        public string value = " ";
-        public bool isMine = false;
-        public bool isMarked = false;
+        public string Value = " ";
+        public bool IsMine;
+        public bool IsMarked;
 
         public Cell(bool mine)
         {
             if (mine)
             {
-                isMine = true;
-                value = "¤";
+                IsMine = true;
+                Value = "¤";
             }
         }
-        public string show()
+        public string Show()
         {
-            if (isMarked)
+            if (IsMarked)
                 return "X";
             else
-                return value;
+                return Value;
         }
-        public void setMine() { isMine = true; }
-        public void mark() { isMarked = true; }
-        public void unmark() { isMarked = false; }
-        public void setWrong()
+        public void SetMine() { IsMine = true; }
+        public void Mark() { IsMarked = true; }
+        public void Unmark() { IsMarked = false; }
+        public void SetWrong()
         {
-            isMarked = false;
-            value = "!";
+            IsMarked = false;
+            Value = "!";
         }
-        public bool isEmpty() { return value == " "; }
+        public bool IsEmpty() { return Value == " "; }
     }
 }

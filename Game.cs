@@ -2,20 +2,20 @@
 {
     internal class Game
     {
-        private Field field;
+        private readonly Field field;
         public Game(int field_width, int field_height, int nmines)
         {
             field = new Field(field_width, field_height, nmines);
         }
-        public bool run()
+        public bool Run()
         {
             string[] command;
-            field.draw();
+            field.Draw();
             while (true)
             {
                 Console.Clear();
-                field.draw();
-                if (field.check())
+                field.Draw();
+                if (field.Check())
                 {
                     return true;
                 }
@@ -27,9 +27,9 @@
                     {
                         int x = Convert.ToInt16(command[0].Substring(1)) - 1;
                         int y = command[0].First() - 'A';
-                        if (field.open(y, x))
+                        if (field.Open(y, x))
                         {
-                            this.finish();
+                            this.Finish();
                             return false;
                         }
                     }
@@ -40,9 +40,9 @@
                         int x = Convert.ToInt16(command[1].Substring(1)) - 1;
                         int y = command[1].First() - 'A';
                         if (command[0] == "M")
-                            field.mark(y, x);
+                            field.Mark(y, x);
                         else
-                            field.unmark(y, x);
+                            field.Unmark(y, x);
                     }
                 }
                 catch (Exception ex)
@@ -52,11 +52,11 @@
                 }
             }
         }
-        private void finish()
+        private void Finish()
         {
-            field.openall();
+            field.OpenAll();
             Console.Clear();
-            field.draw();
+            field.Draw();
         }
     }
 }
