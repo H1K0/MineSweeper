@@ -19,8 +19,7 @@
                 throw new ArgumentException("The number of mines can not be negative.");
             if (nmines > input_width * input_height)
                 throw new ArgumentException("The number of mines can not be greater than the number of all cells.");
-            width = input_width;
-            height = input_height;
+            (width, height) = (input_width, input_height);
             size = width * height;
             cells = new List<Cell>();
             for (int i = 0; i < size; i++)

@@ -12,7 +12,7 @@ namespace MineSweeper
             public int loses { get; set; } = 0;
         }
         private record Root(List<PlayerData> players);
-        private Root root;
+        private readonly Root root;
         public Database()
         {
             path = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "MineSweeper by H1K0");
