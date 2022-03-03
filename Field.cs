@@ -160,7 +160,11 @@
                     cells[i].SetWrong();
             }
         }
-        public void Mark(int y, int x) { cells[y * width + x].Mark(); }
+        public void Mark(int y, int x)
+        {
+            if (!opened.Contains(cells[y * width + x]))
+                cells[y * width + x].Mark();
+        }
         public void Unmark(int y, int x) { cells[y * width + x].Unmark(); }
         public bool Check()
         {
