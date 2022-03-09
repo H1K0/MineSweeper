@@ -25,7 +25,7 @@
                     command = Console.ReadLine().ToUpper().Split();
                     if (command.Length == 1)
                     {
-                        int x = Convert.ToInt16(command[0].Substring(1)) - 1;
+                        int x = Convert.ToInt16(command[0][1..]) - 1;
                         int y = command[0].First() - 'A';
                         if (field.Open(y, x))
                         {
@@ -33,16 +33,19 @@
                             return false;
                         }
                     }
-                    else if (command.Length == 2)
+                    else if (command.Length > 1)
                     {
                         if (command[0] != "M" && command[0] != "U")
                             throw new Exception("Invalid command.");
-                        int x = Convert.ToInt16(command[1].Substring(1)) - 1;
-                        int y = command[1].First() - 'A';
-                        if (command[0] == "M")
-                            field.Mark(y, x);
-                        else
-                            field.Unmark(y, x);
+                        for (int i = 1; i < command.Length; i++)
+                        {
+                            int x = Convert.ToInt16(command[i][1..]) - 1;
+                            int y = command[i].First() - 'A';
+                            if (command[0] == "M")
+                                field.Mark(y, x);
+                            else
+                                field.Unmark(y, x);
+                        }
                     }
                 }
                 catch (Exception ex)
