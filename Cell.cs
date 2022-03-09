@@ -5,7 +5,6 @@
         public string Value = " ";
         public bool IsMine;
         public bool IsMarked;
-
         public Cell(bool mine)
         {
             if (mine)

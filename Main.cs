@@ -65,7 +65,7 @@
                 bool exit = false;
                 while (true)
                 {
-                    key = Console.ReadKey().Key;
+                    key = Console.ReadKey(true).Key;
                     if (key == ConsoleKey.Enter)
                     {
                         Console.Clear();
