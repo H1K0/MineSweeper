@@ -90,10 +90,10 @@
         {
             if (y < 0 || y >= height || x < 0 || x >= width)
                 throw new Exception("Coordinates out of the field!");
-            if (cells[y * width + x].IsMine)
-                return true;
             if (cells[y * width + x].IsMarked)
                 return false;
+            if (cells[y * width + x].IsMine)
+                return true;
             if (!opened.Contains(cells[y * width + x]))
             {
                 opened.Add(cells[y * width + x]);
