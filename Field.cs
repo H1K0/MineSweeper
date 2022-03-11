@@ -5,9 +5,10 @@
         private readonly int width = 0;
         private readonly int height = 0;
         private readonly int size = 0;
+        private int nmines = 0;
         private readonly List<Cell> cells = new();
         private readonly List<Cell> opened = new();
-        public Field(int input_width, int input_height, int nmines)
+        public Field(int input_width, int input_height, int input_nmines)
         {
             if (input_width < 0 || input_height < 0)
                 throw new ArgumentException("Field dimensions must be natural numbers.");
@@ -19,11 +20,11 @@
                 throw new ArgumentException("The number of mines can not be negative.");
             if (nmines > input_width * input_height)
                 throw new ArgumentException("The number of mines can not be greater than the number of all cells.");
-            (width, height) = (input_width, input_height);
+            (width, height, nmines) = (input_width, input_height, input_nmines);
             size = width * height;
             cells = new List<Cell>();
             for (int i = 0; i < size; i++)
-                cells.Add(new Cell(nmines-- > 0));
+                cells.Add(new Cell(input_nmines-- > 0));
             Random rnd = new();
             for (int i = 0; i < size; i++)
             {
@@ -85,6 +86,7 @@
                 Console.Write("═");
             }
             Console.WriteLine("╝");
+            Console.WriteLine($"Remaining mines: {nmines}.");
         }
         public bool Open(int y, int x)
         {
@@ -162,9 +164,16 @@
         public void Mark(int y, int x)
         {
             if (!opened.Contains(cells[y * width + x]))
+            {
                 cells[y * width + x].Mark();
+                nmines--;
+            }
         }
-        public void Unmark(int y, int x) { cells[y * width + x].Unmark(); }
+        public void Unmark(int y, int x)
+        {
+            cells[y * width + x].Unmark();
+            nmines++;
+        }
         public bool Check()
         {
             for (int i = 0; i < size; i++)
