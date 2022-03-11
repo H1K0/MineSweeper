@@ -14,11 +14,12 @@
             while (true)
             {
                 Console.Clear();
-                field.Draw();
                 if (field.Check())
                 {
+                    field.OpenAll(true);
                     return true;
                 }
+                field.Draw();
                 Console.Write("Enter your command: ");
                 try
                 {
@@ -29,7 +30,8 @@
                         int y = command[0].First() - 'A';
                         if (field.Open(y, x))
                         {
-                            this.Finish();
+                            Console.Clear();
+                            field.OpenAll(false);
                             return false;
                         }
                     }
@@ -54,12 +56,6 @@
                     Thread.Sleep(1500);
                 }
             }
-        }
-        private void Finish()
-        {
-            field.OpenAll();
-            Console.Clear();
-            field.Draw();
         }
     }
 }

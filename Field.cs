@@ -151,7 +151,7 @@
             }
             return false;
         }
-        public void OpenAll()
+        public void OpenAll(bool automark)
         {
             for (int i = 0; i < size; i++)
             {
@@ -159,7 +159,13 @@
                     opened.Add(cells[i]);
                 if (cells[i].IsMarked && !cells[i].IsMine)
                     cells[i].SetWrong();
+                if (automark && cells[i].IsMine)
+                {
+                    cells[i].Mark();
+                    nmines = 0;
+                }
             }
+            this.Draw();
         }
         public void Mark(int y, int x)
         {
