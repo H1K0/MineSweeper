@@ -10,6 +10,20 @@
     <Authors>H1K0</Authors>
     <StartupObject>MineSweeper.Program</StartupObject>
     <PackageProjectUrl>https://github.com/H1K0/MineSweeper</PackageProjectUrl>
+    <ApplicationIcon>favicon.ico</ApplicationIcon>
+    <Description>Console MineSweeper game on C#</Description>
+    <PackageIcon>favicon.png</PackageIcon>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="favicon.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="favicon.png">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+  </ItemGroup>
 
 </Project>

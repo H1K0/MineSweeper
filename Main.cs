@@ -8,6 +8,7 @@
             Database database = new();
             int PlayerId;
             string PlayerName = "";
+            Console.Title = "MineSweeper by H1K0";
             Console.WriteLine("(C) Masahiko AMANO a.k.a. H1K0, 2022\n\n" +
                     "Hey! Let's play the MineSweeper game!\nPress any button for help or Enter to log in.");
             while (Console.ReadKey(true).Key != ConsoleKey.Enter)
