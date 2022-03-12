@@ -78,7 +78,7 @@
                 {
                     Console.Write(" " + ((opened.Contains(cells[y * width + x]) || cells[y * width + x].IsMarked) ? cells[y * width + x].Show() : "■"));
                 }
-                Console.WriteLine(" ║");
+                Console.WriteLine(" ║ " + (char)('A' + y));
             }
             Console.Write("  ╚");
             for (int i = 0; i < 2 * width + 1; i++)
@@ -86,7 +86,12 @@
                 Console.Write("═");
             }
             Console.WriteLine("╝");
-            Console.WriteLine($"Remaining mines: {nmines}.");
+            Console.Write("   ");
+            for (int i = 0; i < width;)
+            {
+                Console.Write(" " + ++i);
+            }
+            Console.WriteLine($"\n\nRemaining mines: {nmines}.");
         }
         public bool Open(int y, int x)
         {
